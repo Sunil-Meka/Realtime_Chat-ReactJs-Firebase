@@ -1,31 +1,41 @@
-// UserProfile.js
-import React from 'react';
-import { auth } from '../config';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { auth } from "../config";
+import { useNavigate } from "react-router-dom";
+import { Button, Typography } from "@mui/material";
 
 const UserProfile = ({ user }) => {
-    const navigate = useNavigate(); // Access the history object
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      if (localStorage.getItem('currentUser')) {
-        localStorage.removeItem('currentUser');
+      if (localStorage.getItem("currentUser")) {
+        localStorage.removeItem("currentUser");
       }
-      navigate("/")
-    
+      navigate("/");
     } catch (error) {
-      console.error('Error logging out:', error.message);
+      console.error("Error logging out:", error.message);
     }
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
-      <div style={{ marginRight: '20px' }}>
-        <span style={{ marginRight: '10px' }}>{user?.displayName || user?.email}</span>
-        <button onClick={handleLogout} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#4caf50' }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        marginBottom: "20px",
+      }}
+    >
+      <div style={{ marginRight: "20px" }}>
+        <Typography
+          variant="body1"
+          style={{ marginRight: "10px", color: "#333" }}
+        >
+          {user?.displayName || user?.email}
+        </Typography>
+        <Button onClick={handleLogout} style={{ color: "#4caf50" }}>
           Logout
-        </button>
+        </Button>
       </div>
     </div>
   );
