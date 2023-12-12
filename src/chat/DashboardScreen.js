@@ -6,10 +6,12 @@ import UserProfile from "../auth/UserProfile";
 import { Card, CardContent, Typography, Grid } from "@mui/material"; // Import Material-UI components
 
 const DashboardScreen = () => {
+  // State variables
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
+  // A HOOK TO GET THE CURRENT USER FROM THE FIREBASE
   useEffect(() => {
     const checkAuthStatus = () => {
       const user =
@@ -25,6 +27,7 @@ const DashboardScreen = () => {
     checkAuthStatus();
   }, [navigate]);
 
+  // A HOOK TO GET THE USERS FROM THE FIREBASE
   useEffect(() => {
     const fetchData = async () => {
       const q = query(

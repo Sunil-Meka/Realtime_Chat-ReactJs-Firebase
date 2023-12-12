@@ -5,9 +5,11 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { TextField, Button, Typography } from "@mui/material";
 
 const ForgotPasswordScreen = () => {
+  // State variables
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
+  // Function to handle forgot password
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     try {

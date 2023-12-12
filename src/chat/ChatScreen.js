@@ -19,7 +19,9 @@ import {
   Grid,
 } from "@mui/material"; // Import Material-UI components
 
+// ChatScreen component
 const ChatHeader = () => {
+
   const { recipient } = useParams();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -31,6 +33,7 @@ const ChatHeader = () => {
   const messagesEndRef = useRef(null);
   let displayName = null;
 
+  //A HOOK TO GET THE MESSAGSES FROM THE FIREBASE
   useEffect(() => {
     const fetchMessages = async () => {
       try {
@@ -66,6 +69,8 @@ const ChatHeader = () => {
     fetchMessages();
   }, [recipient, currentUser]);
 
+
+//fUNCTION TO SEND THE MESSAGE
   const handleSendMessage = async (e) => {
     e.preventDefault();
 
@@ -88,6 +93,7 @@ const ChatHeader = () => {
     }
   };
 
+  //fUNCTION FOR THE SCROLLING
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({
@@ -98,6 +104,7 @@ const ChatHeader = () => {
     }
   };
 
+// HOOK TO LOAD THE MESSAGES WHEN SCROLLING
   useEffect(() => {
     scrollToBottom();
   }, [messages]);

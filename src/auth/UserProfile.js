@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Button, Typography } from "@mui/material";
 
 const UserProfile = ({ user }) => {
+  // State variables
   const navigate = useNavigate();
 
+  // Function to handle logout
   const handleLogout = async () => {
     try {
       await auth.signOut();

@@ -15,10 +15,12 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const AuthScreen = () => {
+  // State variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Access the history object
 
+  // A HOOK TO CHECK IF THE USER IS ALREADY LOGGED IN
   useEffect(() => {
     const checkAuthStatus = () => {
       const storedUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -31,6 +33,7 @@ const AuthScreen = () => {
     checkAuthStatus();
   }, [navigate]);
 
+  // Function to handle sign-in
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {

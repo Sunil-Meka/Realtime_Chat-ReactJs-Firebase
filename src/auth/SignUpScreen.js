@@ -6,11 +6,13 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { TextField, Button, Typography } from "@mui/material";
 
 const SignUpScreen = () => {
+  // State variables
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  // Function to handle sign-up
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
